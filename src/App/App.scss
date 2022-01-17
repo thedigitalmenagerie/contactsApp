@@ -1,8 +1,27 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 689px;
+}
+
+.Left {
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
+  width: 50%;
+  height: 100%;
+  border: 20px solid black;
+}
+
+.Right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  border: 20px solid black;
 }
 
 .App-logo {

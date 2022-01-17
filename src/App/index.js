@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Cards from '../components/cards/cards';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Routes from '../helpers/routes';
 import { getContacts } from '../helpers/data/contactsData';
+import Cards from '../components/cards/cards';
 import './App.scss';
+
+const styleObj = {
+  color: '#000000',
+  fontWeight: 'bold',
+  fontSize: 'xx-large'
+};
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -12,18 +20,29 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      {contacts?.map((contact) => (
-        <Cards
-          key={contact.id}
-          id={contact.id}
-          name={contact.name}
-          phone={contact.phone}
-          notes={contact.notes}
-          email={contact.email}
+      <Router>
+        <div className='Left'>
+          <Link to="/" style={styleObj}>CONTACTS</Link>
+        {contacts?.map((contact) => (
+          <Cards
+            key={contact.id}
+            id={contact.id}
+            name={contact.name}
+            phone={contact.phone}
+            email={contact.email}
+            notes={contact.notes}
+            contacts={contacts}
+            setContacts={setContacts}
+          />
+        ))}
+        </div>
+        <div className='Right'>
+        <Routes
           contacts={contacts}
           setContacts={setContacts}
         />
-      ))}
+        </div>
+      </Router>
     </div>
   );
 }

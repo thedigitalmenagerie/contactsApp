@@ -2,29 +2,35 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
+  height: 689px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
 `;
 
 export const Modal = styled.div`
-  width: 100%;
-  height: 100%;
+height: 689px;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+`;
+
+export const Title = styled.div`
+  font-weight: bold;
+  font-size: large;
 `;
 
 export const CardElements = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+`;
+
+export const CardElementsTitle = styled.div`
+font-weight: bold;
+font-size: small;
 `;
 
 export const Button = styled.div`
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: flex-end;
-  // background-color: Transparent;
-  // background-repeat:no-repeat;
-  // border: none;
-  // cursor: pointer;
-  // overflow: hidden; 
+font-weight: bold;
+font-size: small;
 `;

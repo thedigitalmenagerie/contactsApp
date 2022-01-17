@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getContacts, updateContact } from '../helpers/data/contactsData';
+import { getContact, updateContact } from '../helpers/data/contactsData';
 import {
   Form,
   FormTitle,
@@ -15,7 +15,8 @@ export default function EditContactForm({
   phone,
   email,
   notes,
-  setContacts
+  closeModal,
+  setSingleCard
 }) {
   const [toEdit, setToEdit] = useState({
     id,
@@ -50,7 +51,8 @@ export default function EditContactForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateContact(toEdit.id, toEdit).then(() => getContacts().then((response) => setContacts(response)));
+    updateContact(toEdit.id, toEdit).then(() => getContact(toEdit.id).then((response) => setSingleCard(response)));
+    closeModal();
   };
 
   return (
@@ -96,7 +98,7 @@ export default function EditContactForm({
         ></Input>
       </Row>
       <Button className='add' type='submit' onClick={handleSubmit}>
-        Update Contact
+        UPDATE
       </Button>
     </Form>
   );
@@ -108,5 +110,6 @@ EditContactForm.propTypes = {
   phone: PropTypes.string,
   email: PropTypes.string,
   notes: PropTypes.string,
-  setContacts: PropTypes.func,
+  setSingleCard: PropTypes.func,
+  closeModal: PropTypes.func,
 };

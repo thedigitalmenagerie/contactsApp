@@ -1,53 +1,26 @@
 /* eslint-disable arrow-body-style */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
-  Button,
   Container,
-  Right,
+  Button,
 } from './cardsElements';
-import SingleCard from './singleCard';
 
 const Cards = ({
   id,
   name,
-  phone,
-  notes,
-  email,
-  contacts,
-  setContacts
 }) => {
-  const [showDetail, setShowDetail] = useState(false);
-
+  const history = useHistory();
   const handleClick = () => {
-    if (showDetail === false) {
-      setShowDetail(true);
-    } else {
-      setShowDetail(false);
-    }
+    history.push(`/${id}`);
   };
   return (
     <Container>
       <Card key={id}>
         <Button onClick={handleClick}>{name}</Button>
       </Card>
-      <Right>
-      {showDetail === true
-        ? <SingleCard
-            contacts={contacts}
-            setContacts={setContacts}
-            showDetail={showDetail}
-            id={id}
-            key={id}
-            phone={phone}
-            notes={notes}
-            email={email}
-            name={name}
-          />
-        : <div></div>
-      }
-      </Right>
     </Container>
   );
 };
